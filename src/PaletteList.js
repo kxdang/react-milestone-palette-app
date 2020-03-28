@@ -7,7 +7,7 @@ import { findByLabelText } from "@testing-library/react";
 const styles = {
   root: {
     backgroundColor: "blue",
-    height: "100%",
+    height: "100vh",
     display: "flex",
     alignItems: "flex-start",
     justifyContent: "center"
