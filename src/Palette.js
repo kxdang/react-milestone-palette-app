@@ -20,7 +20,6 @@ export default class Palette extends Component {
 
   changeLevel(level) {
     this.setState({ level });
-    console.log(level);
   }
 
   changeFormat(val) {
