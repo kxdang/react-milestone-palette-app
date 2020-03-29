@@ -36,9 +36,7 @@ export default class ColorBox extends Component {
           </div>
           <div className="copy-container">
             <div className="box-content">
-              <span className={isDarkColor && "light-text"}>
-                {name} {chroma(background).luminance()}
-              </span>
+              <span className={isDarkColor && "light-text"}>{name}</span>
             </div>
             <button className={`copy-button ${isLightColor && "dark-text"}`}>
               Copy
