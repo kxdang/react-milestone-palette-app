@@ -34,27 +34,31 @@ export default class Navbar extends Component {
         <div className="logo">
           <Link to="/">React Color Picker</Link>
         </div>
-        <div className="slider-container">
-          <span>Level: {level}</span>
-          <div className="slider">
-            <Slider
-              defaultValue={level}
-              min={100}
-              max={900}
-              step={100}
-              onAfterChange={changeLevel}
-            />
+
+        {this.props.showSlider && (
+          <div className="slider-container">
+            <span>Level: {level}</span>
+            <div className="slider">
+              <Slider
+                defaultValue={level}
+                min={100}
+                max={900}
+                step={100}
+                onAfterChange={changeLevel}
+              />
+            </div>
           </div>
-        </div>
+        )}
+
         <div className="select-container">
           <Select onChange={this.handleFormatChange} value={format}>
             <MenuItem value="hex">HEX - #FFFFFF</MenuItem>
-            <MenuItem value="rgb">RGB - rgb(255,2555,255)</MenuItem>
+            <MenuItem value="rgb">RGB - rgb(255,255,255)</MenuItem>
             <MenuItem value="rgba">RGBA - rgba(255,255,255, 1.0)</MenuItem>
           </Select>
         </div>
         <Snackbar
-          anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+          anchorOrigin={{ vertical: "top", horizontal: "center" }}
           open={this.state.open}
           autoHideDuration={2000}
           message={

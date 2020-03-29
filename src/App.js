@@ -14,7 +14,6 @@ class App extends Component {
     });
   }
   render() {
-    // console.log(seedColors);
     return (
       <Switch>
         <Route
