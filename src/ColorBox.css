@@ -12,8 +12,9 @@
   height: 50%;
 }
 
-.ColorBox.go-back {
+.go-back {
   background-color: black;
+  position: relative;
 }
 
 .copy-button,
@@ -64,20 +65,6 @@
 
 .ColorBox .dark-text {
   color: rgba(0, 0, 0, 0.5);
-}
-
-.see-more {
-  background-color: rgba(255, 255, 255, 0.3);
-  position: absolute;
-  border: none;
-  right: 0px;
-  bottom: 0px;
-  color: white;
-  text-transform: uppercase;
-  width: 60px;
-  height: 30px;
-  text-align: center;
-  line-height: 30px;
 }
 
 .copy-overlay {
