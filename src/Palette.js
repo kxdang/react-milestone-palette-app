@@ -3,31 +3,12 @@ import ColorBox from "./ColorBox";
 import Navbar from "./Navbar";
 import PaletteFooter from "./PaletteFooter";
 import { withStyles } from "@material-ui/styles";
-
-import "./Palette.css";
+import styles from "./styles/PaletteStyles";
 
 // We can just import Slider or Range to reduce bundle size
 // import Slider from 'rc-slider/lib/Slider';
 // import Range from 'rc-slider/lib/Range';
 import "rc-slider/assets/index.css";
-
-const styles = {
-  Palette: {
-    height: "100vh",
-    overflow: "hidden"
-  },
-  PaletteColors: {
-    height: "90%"
-  },
-  PaletteFooter: {
-    display: "flex",
-    backgroundColor: "white",
-    height: "4vh",
-    justifyContent: "flex-end",
-    alignItems: "center",
-    fontWeight: "bold"
-  }
-};
 
 class Palette extends Component {
   constructor(props) {
