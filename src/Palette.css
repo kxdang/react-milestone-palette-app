@@ -1,11 +1,11 @@
-.Palette {
+/* .Palette {
   height: 100vh;
   overflow: hidden;
 }
 
 .Palette-colors {
   height: 90%;
-}
+} */
 
 .Palette-footer {
   display: flex;
