@@ -1,6 +1,6 @@
 export default {
   root: {
-    backgroundColor: "#eaeaea",
+    backgroundColor: "#097ddb",
     height: "100vh",
     display: "flex",
     alignItems: "flex-start",
@@ -15,8 +15,13 @@ export default {
   },
   nav: {
     display: "flex",
+    alignItems: "center",
     width: "100%",
-    justifyContent: "space-between"
+    justifyContent: "space-between",
+    color: "white",
+    "& a": {
+      color: "white"
+    }
   },
   palettes: {
     boxSizing: "border-box",
