@@ -1,6 +1,6 @@
 export default {
   root: {
-    backgroundColor: "blue",
+    backgroundColor: "#eaeaea",
     height: "100vh",
     display: "flex",
     alignItems: "flex-start",
