@@ -79,9 +79,11 @@ class NewPaletteForm extends Component {
     super(props);
     this.state = {
       open: true,
-      currentColor: "teal"
+      currentColor: "teal",
+      colors: ["purple", "#5C9AD0"]
     };
     this.updateCurrentColor = this.updateCurrentColor.bind(this);
+    this.addNewColor = this.addNewColor.bind(this);
   }
 
   handleDrawerOpen = () => {
@@ -94,6 +96,10 @@ class NewPaletteForm extends Component {
 
   updateCurrentColor(newColor) {
     this.setState({ currentColor: newColor.hex });
+  }
+
+  addNewColor() {
+    this.setState({ colors: [...this.state.colors, this.state.currentColor] });
   }
 
   render() {
@@ -156,6 +162,7 @@ class NewPaletteForm extends Component {
             variant="contained"
             color="primary"
             style={{ backgroundColor: this.state.currentColor }}
+            onClick={this.addNewColor}
           >
             Add Color
           </Button>
@@ -166,6 +173,11 @@ class NewPaletteForm extends Component {
           })}
         >
           <div className={classes.drawerHeader} />
+          <ul>
+            {this.state.colors.map(c => (
+              <li style={{ background: c }}>{c}</li>
+            ))}
+          </ul>
         </main>
       </div>
     );
