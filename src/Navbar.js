@@ -8,8 +8,9 @@ import IconButton from "@material-ui/core/IconButton";
 import Slider from "rc-slider";
 import CloseIcon from "@material-ui/icons/Close";
 import Snackbar from "@material-ui/core/Snackbar";
-import styles from "./styles/NavbarStyles";
+
 import "rc-slider/assets/index.css";
+import styles from "./styles/NavbarStyles";
 
 class Navbar extends Component {
   constructor(props) {
@@ -46,6 +47,37 @@ class Navbar extends Component {
                 max={900}
                 step={100}
                 onAfterChange={changeLevel}
+                railStyle={{ height: "8px" }}
+                activeDotStyle={{
+                  backgroundColor: "#7fcd91",
+                  outline: "none",
+                  border: "2px solid #7fcd91",
+                  boxShadow: "none",
+                  width: "13px",
+                  height: "13px",
+                  marginLeft: "-7px",
+                  marginTop: "-3px"
+                }}
+                dotStyle={{
+                  backgroundColor: "#7fcd91",
+                  outline: "none",
+                  border: "2px solid #7fcd91",
+                  boxShadow: "none",
+                  width: "13px",
+                  height: "13px",
+                  marginLeft: "-7px",
+                  marginTop: "-3px"
+                }}
+                handleStyle={{
+                  backgroundColor: "#7fcd91",
+                  outline: "none",
+                  border: "2px solid #7fcd91",
+                  boxShadow: "none",
+                  width: "13px",
+                  height: "13px",
+                  marginLeft: "-7px",
+                  marginTop: "-3px"
+                }}
               />
             </div>
           </div>
