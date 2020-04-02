@@ -96,7 +96,7 @@ class NewPaletteForm extends Component {
   componentDidMount() {
     ValidatorForm.addValidationRule("isColorNameUnique", value =>
       this.state.colors.every(
-        ({ name }) => name.toLowerCase() !== value.toLowerCase()
+        ({ name }) => name.trim().toLowerCase() !== value.trim().toLowerCase()
       )
     );
 
@@ -143,6 +143,14 @@ class NewPaletteForm extends Component {
     this.setState({
       colors: [...this.state.colors, newColor],
       newColorName: ""
+    });
+  }
+
+  removeColor(colorName) {
+    this.setState({
+      colors: this.state.colors.filter(
+        colorItem => colorItem.name !== colorName
+      )
     });
   }
 
@@ -211,7 +219,7 @@ class NewPaletteForm extends Component {
             <Button variant="contained" color="secondary">
               Clear Palette
             </Button>
-            <Button variant="contained" color="Primary">
+            <Button variant="contained" color="primary">
               Random Color
             </Button>
           </div>
@@ -250,7 +258,12 @@ class NewPaletteForm extends Component {
           <div className={classes.drawerHeader} />
 
           {this.state.colors.map(c => (
-            <DraggableColorBox color={c.color} name={c.name} />
+            <DraggableColorBox
+              color={c.color}
+              name={c.name}
+              key={c.name}
+              handleClick={() => this.removeColor(c.name)}
+            />
           ))}
         </main>
       </div>
