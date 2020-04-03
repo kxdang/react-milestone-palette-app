@@ -21,9 +21,9 @@ const styles = theme => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen
     }),
-    flexDirection: `row`,
-    justifyContent: `space-between`,
-    height: `64px`
+    flexDirection: "row",
+    justifyContent: "space-between",
+    height: "64px"
   },
   appBarShift: {
     width: `calc(100% - ${drawerWidth}px)`,

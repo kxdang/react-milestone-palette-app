@@ -1,20 +1,32 @@
 import React, { Component } from "react";
 
-import classNames from "classnames";
 import { withStyles } from "@material-ui/core/styles";
-import Drawer from "@material-ui/core/Drawer";
-import PaletteFormNav from "./PaletteFormNav";
-import Typography from "@material-ui/core/Typography";
-import Divider from "@material-ui/core/Divider";
-import IconButton from "@material-ui/core/IconButton";
-import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import Button from "@material-ui/core/Button";
-import DraggableColorList from "./DraggableColorList";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
-import { arrayMove } from "react-sortable-hoc";
 import { ChromePicker } from "react-color";
 import CachedIcon from "@material-ui/icons/Cached";
 import chroma from "chroma-js";
+
+const styles = {
+  picker: {
+    width: "100% !important",
+    marginTop: "2rem"
+  },
+  addColor: {
+    width: "100%",
+    padding: "0.3rem",
+    marginTop: "2rem",
+    fontSize: "2rem"
+  },
+  randomColorBtn: {
+    display: "flex",
+    justifyContent: "center",
+    marginTop: "1rem"
+  },
+  colorNameInput: {
+    width: "100%"
+  }
+};
 
 class ColorPickerForm extends Component {
   constructor(props) {
@@ -61,17 +73,22 @@ class ColorPickerForm extends Component {
   }
 
   render() {
-    const { isPaletteFull } = this.props;
+    const { isPaletteFull, classes } = this.props;
     return (
       <div>
         <ChromePicker
           color={this.state.currentColor}
           onChangeComplete={this.updateCurrentColor}
+          className={classes.picker}
         />
-        <ValidatorForm onSubmit={this.handleSubmit}>
+        <ValidatorForm onSubmit={this.handleSubmit} instantValidate={false}>
           <TextValidator
             value={this.state.newColorName}
             name="newColorName"
+            className={classes.colorNameInput}
+            variant="filled"
+            margin="normal"
+            placeholder="Color name (e.g Honey Yellow)"
             onChange={this.handleChange}
             validators={["required", "isColorNameUnique", "isColorUnique"]}
             errorMessages={[
@@ -85,6 +102,7 @@ class ColorPickerForm extends Component {
             variant="contained"
             type="submit"
             color="primary"
+            className={classes.addColor}
             style={{
               backgroundColor: isPaletteFull ? "grey" : this.state.currentColor
             }}
@@ -92,20 +110,21 @@ class ColorPickerForm extends Component {
           >
             {isPaletteFull ? "Palette Full" : "Add Color"}
           </Button>
-
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={this.randomColorGenerator}
-            disabled={isPaletteFull}
-          >
-            <CachedIcon />
-            {/* <span style={{ paddingLeft: `10px` }}>Random Color</span> */}
-          </Button>
+          <div className={classes.randomColorBtn}>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={this.randomColorGenerator}
+              disabled={isPaletteFull}
+            >
+              <CachedIcon />
+              {/* <span style={{ paddingLeft: `10px` }}>Random Color</span> */}
+            </Button>
+          </div>
         </ValidatorForm>
       </div>
     );
   }
 }
 
-export default ColorPickerForm;
+export default withStyles(styles)(ColorPickerForm);

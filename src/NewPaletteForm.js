@@ -12,7 +12,8 @@ import Button from "@material-ui/core/Button";
 import DraggableColorList from "./DraggableColorList";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import { arrayMove } from "react-sortable-hoc";
-import { ChromePicker } from "react-color";
+import DeleteSweepIcon from "@material-ui/icons/DeleteSweep";
+
 import chroma from "chroma-js";
 
 const drawerWidth = 400;
@@ -29,7 +30,9 @@ const styles = theme => ({
     flexShrink: 0
   },
   drawerPaper: {
-    width: drawerWidth
+    width: drawerWidth,
+    display: "flex",
+    alignItems: "center"
   },
   drawerHeader: {
     display: "flex",
@@ -54,6 +57,20 @@ const styles = theme => ({
       duration: theme.transitions.duration.enteringScreen
     }),
     marginLeft: 0
+  },
+  container: {
+    width: "90%",
+    height: "100%",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  buttons: {
+    display: "flex",
+    justifyContent: "center",
+    width: "100%",
+    marginTop: "1rem"
   }
 });
 
@@ -154,22 +171,28 @@ class NewPaletteForm extends Component {
             </IconButton>
           </div>
           <Divider />
-          <Typography variant="h4">Design your palette</Typography>
-          <div>
-            <Button
-              variant="contained"
-              color="secondary"
-              onClick={this.clearPalette}
-            >
-              Clear Palette
-            </Button>
+          <div className={classes.container}>
+            <Typography variant="h4" gutterBottom>
+              Design your palette
+            </Typography>
+
+            <div className={classes.buttons}>
+              <Button
+                variant="contained"
+                color="secondary"
+                onClick={this.clearPalette}
+              >
+                <DeleteSweepIcon style={{ marginRight: `0.5rem` }} />
+                Clear Palette
+              </Button>
+            </div>
+            <ColorPickerForm
+              isPaletteFull={isPaletteFull}
+              updateCurrentColor={this.updateCurrentColor}
+              addNewColor={this.addNewColor}
+              colors={colors}
+            />
           </div>
-          <ColorPickerForm
-            isPaletteFull={isPaletteFull}
-            updateCurrentColor={this.updateCurrentColor}
-            addNewColor={this.addNewColor}
-            colors={colors}
-          />
         </Drawer>
         <main
           className={classNames(classes.content, {
