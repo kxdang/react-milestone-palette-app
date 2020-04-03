@@ -100,7 +100,7 @@ class ColorPickerForm extends Component {
             disabled={isPaletteFull}
           >
             <CachedIcon />
-            <span style={{ paddingLeft: `10px` }}>Random Color</span>
+            {/* <span style={{ paddingLeft: `10px` }}>Random Color</span> */}
           </Button>
         </ValidatorForm>
       </div>
