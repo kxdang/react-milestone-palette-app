@@ -18,28 +18,28 @@ import chroma from "chroma-js";
 
 const drawerWidth = 400;
 
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
-    display: "flex"
+    display: "flex",
   },
   hide: {
-    display: "none"
+    display: "none",
   },
   drawer: {
     width: drawerWidth,
-    flexShrink: 0
+    flexShrink: 0,
   },
   drawerPaper: {
     width: drawerWidth,
     display: "flex",
-    alignItems: "center"
+    alignItems: "center",
   },
   drawerHeader: {
     display: "flex",
     alignItems: "center",
     padding: "0 8px",
     ...theme.mixins.toolbar,
-    justifyContent: "flex-end"
+    justifyContent: "flex-end",
   },
   content: {
     flexGrow: 1,
@@ -47,16 +47,16 @@ const styles = theme => ({
     padding: theme.spacing.unit * 3,
     transition: theme.transitions.create("margin", {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen
+      duration: theme.transitions.duration.leavingScreen,
     }),
-    marginLeft: -drawerWidth
+    marginLeft: -drawerWidth,
   },
   contentShift: {
     transition: theme.transitions.create("margin", {
       easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen
+      duration: theme.transitions.duration.enteringScreen,
     }),
-    marginLeft: 0
+    marginLeft: 0,
   },
   container: {
     width: "90%",
@@ -64,25 +64,25 @@ const styles = theme => ({
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
   },
   buttons: {
     display: "flex",
     justifyContent: "center",
     width: "100%",
-    marginTop: "1rem"
-  }
+    marginTop: "1rem",
+  },
 });
 
 class NewPaletteForm extends Component {
   static defaultProps = {
-    maxColors: 20
+    maxColors: 20,
   };
   constructor(props) {
     super(props);
     this.state = {
       open: true,
-      colors: this.props.palettes[0].colors
+      colors: this.props.palettes[0].colors,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -92,7 +92,7 @@ class NewPaletteForm extends Component {
   }
 
   componentDidMount() {
-    ValidatorForm.addValidationRule("isColorNameUnique", value =>
+    ValidatorForm.addValidationRule("isColorNameUnique", (value) =>
       this.state.colors.every(
         ({ name }) => name.trim().toLowerCase() !== value.trim().toLowerCase()
       )
@@ -110,16 +110,13 @@ class NewPaletteForm extends Component {
   addNewColor(newColor) {
     this.setState({
       colors: [...this.state.colors, newColor],
-      newColorName: ""
+      newColorName: "",
     });
   }
 
-  handleSubmit(newPaletteName) {
-    const newPalette = {
-      paletteName: newPaletteName,
-      id: newPaletteName.toLowerCase().replace(/ /g, "-"),
-      colors: this.state.colors
-    };
+  handleSubmit(newPalette) {
+    newPalette.id = newPalette.paletteName.toLowerCase().replace(/ /g, "-");
+    newPalette.colors = this.state.colors;
     this.props.savePalette(newPalette);
     this.props.history.push("/");
   }
@@ -127,20 +124,20 @@ class NewPaletteForm extends Component {
   removeColor(colorName) {
     this.setState({
       colors: this.state.colors.filter(
-        colorItem => colorItem.name !== colorName
-      )
+        (colorItem) => colorItem.name !== colorName
+      ),
     });
   }
 
   clearPalette() {
     this.setState({
-      colors: []
+      colors: [],
     });
   }
 
   onSortEnd = ({ oldIndex, newIndex }) => {
     this.setState(({ colors }) => ({
-      colors: arrayMove(colors, oldIndex, newIndex)
+      colors: arrayMove(colors, oldIndex, newIndex),
     }));
   };
 
@@ -162,7 +159,7 @@ class NewPaletteForm extends Component {
           anchor="left"
           open={open}
           classes={{
-            paper: classes.drawerPaper
+            paper: classes.drawerPaper,
           }}
         >
           <div className={classes.drawerHeader}>
@@ -196,7 +193,7 @@ class NewPaletteForm extends Component {
         </Drawer>
         <main
           className={classNames(classes.content, {
-            [classes.contentShift]: open
+            [classes.contentShift]: open,
           })}
         >
           <div className={classes.drawerHeader} />
