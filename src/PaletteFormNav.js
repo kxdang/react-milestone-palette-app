@@ -13,41 +13,41 @@ import Button from "@material-ui/core/Button";
 import { withStyles } from "@material-ui/core/styles";
 
 const drawerWidth = 400;
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
-    display: "flex"
+    display: "flex",
   },
   appBar: {
     transition: theme.transitions.create(["margin", "width"], {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen
+      duration: theme.transitions.duration.leavingScreen,
     }),
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    height: "64px"
+    height: "64px",
   },
   appBarShift: {
     width: `calc(100% - ${drawerWidth}px)`,
     marginLeft: drawerWidth,
     transition: theme.transitions.create(["margin", "width"], {
       easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen
-    })
+      duration: theme.transitions.duration.enteringScreen,
+    }),
   },
   menuButton: {
     marginLeft: 12,
-    marginRight: 20
+    marginRight: 20,
   },
   navBtns: {
     marginRight: "1rem",
     "& a": {
-      textDecoration: "none"
-    }
+      textDecoration: "none",
+    },
   },
   button: {
-    margin: "0 0.5rem"
-  }
+    margin: "0 0.5rem",
+  },
 });
 
 class PaletteFormNav extends Component {
@@ -55,10 +55,15 @@ class PaletteFormNav extends Component {
     super(props);
     this.state = { newPaletteName: "", formShowing: false };
     this.showForm = this.showForm.bind(this);
+    this.hideForm = this.hideForm.bind(this);
   }
 
   showForm() {
     this.setState({ formShowing: true });
+  }
+
+  hideForm() {
+    this.setState({ formShowing: false });
   }
 
   render() {
@@ -71,7 +76,7 @@ class PaletteFormNav extends Component {
           position="fixed"
           color="default"
           className={classNames(classes.appBar, {
-            [classes.appBarShift]: open
+            [classes.appBarShift]: open,
           })}
         >
           <Toolbar disableGutters={!open}>
@@ -108,7 +113,11 @@ class PaletteFormNav extends Component {
           </div>
         </AppBar>
         {formShowing && (
-          <PaletteMetaForm palettes={palettes} handleSubmit={handleSubmit} />
+          <PaletteMetaForm
+            palettes={palettes}
+            handleSubmit={handleSubmit}
+            hideForm={this.hideForm}
+          />
         )}
       </div>
     );
