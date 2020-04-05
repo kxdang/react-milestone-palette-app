@@ -6,27 +6,7 @@ import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import { ChromePicker } from "react-color";
 import CachedIcon from "@material-ui/icons/Cached";
 import chroma from "chroma-js";
-
-const styles = {
-  picker: {
-    width: "100% !important",
-    marginTop: "2rem"
-  },
-  addColor: {
-    width: "100%",
-    padding: "0.3rem",
-    marginTop: "2rem",
-    fontSize: "2rem"
-  },
-  randomColorBtn: {
-    display: "flex",
-    justifyContent: "center",
-    marginTop: "1rem"
-  },
-  colorNameInput: {
-    width: "100%"
-  }
-};
+import styles from "./styles/ColorPickerFormStyles";
 
 class ColorPickerForm extends Component {
   constructor(props) {
@@ -40,13 +20,13 @@ class ColorPickerForm extends Component {
   }
 
   componentDidMount() {
-    ValidatorForm.addValidationRule("isColorNameUnique", value =>
+    ValidatorForm.addValidationRule("isColorNameUnique", (value) =>
       this.props.colors.every(
         ({ name }) => name.trim().toLowerCase() !== value.toLowerCase()
       )
     );
 
-    ValidatorForm.addValidationRule("isColorUnique", value =>
+    ValidatorForm.addValidationRule("isColorUnique", (value) =>
       this.props.colors.every(({ color }) => color !== this.state.currentColor)
     );
   }
@@ -58,7 +38,7 @@ class ColorPickerForm extends Component {
   handleSubmit() {
     const newColor = {
       color: this.state.currentColor,
-      name: this.state.newColorName
+      name: this.state.newColorName,
     };
     this.props.addNewColor(newColor);
     this.setState({ newColorName: "" });
@@ -83,18 +63,19 @@ class ColorPickerForm extends Component {
         />
         <ValidatorForm onSubmit={this.handleSubmit} instantValidate={false}>
           <TextValidator
+            label="Color Name"
             value={this.state.newColorName}
             name="newColorName"
             className={classes.colorNameInput}
             variant="filled"
             margin="normal"
-            placeholder="Color name (e.g Honey Yellow)"
+            placeholder="e.g Honey Yellow"
             onChange={this.handleChange}
             validators={["required", "isColorNameUnique", "isColorUnique"]}
             errorMessages={[
               "Colour name is required",
               "Colour name must be unique",
-              "Colour already in palette"
+              "Colour already in palette",
             ]}
           />
 
@@ -104,7 +85,7 @@ class ColorPickerForm extends Component {
             color="primary"
             className={classes.addColor}
             style={{
-              backgroundColor: isPaletteFull ? "grey" : this.state.currentColor
+              backgroundColor: isPaletteFull ? "grey" : this.state.currentColor,
             }}
             disabled={isPaletteFull}
           >
