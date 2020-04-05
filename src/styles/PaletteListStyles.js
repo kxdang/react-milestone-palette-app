@@ -3,6 +3,7 @@ export default {
     backgroundColor: "#097ddb",
     height: "100vh",
     display: "flex",
+    overflowY: "auto",
     alignItems: "flex-start",
     justifyContent: "center",
   },
