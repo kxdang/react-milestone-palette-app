@@ -1,10 +1,12 @@
+import sizes from "./sizes";
+
 export default {
   Palette: {
     height: "100vh",
-    overflow: "hidden"
+    overflow: "hidden",
   },
   PaletteColors: {
-    height: "90%"
+    height: "90%",
   },
   goBack: {
     width: "20%",
@@ -33,7 +35,19 @@ export default {
       color: "white",
       textTransform: "uppercase",
       border: "none",
-      textDecoration: "none"
-    }
-  }
+      textDecoration: "none",
+    },
+    [sizes.down("lg")]: {
+      width: "25%",
+      height: "33.33%",
+    },
+    [sizes.down("md")]: {
+      width: "50%",
+      height: "20%",
+    },
+    [sizes.down("xs")]: {
+      width: "100%",
+      height: "10%",
+    },
+  },
 };
