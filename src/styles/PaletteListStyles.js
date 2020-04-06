@@ -1,13 +1,22 @@
 import sizes from "./sizes";
+import bg from "./bg.svg";
 
 export default {
   root: {
-    backgroundColor: "#097ddb",
     height: "100vh",
     display: "flex",
     overflowY: "auto",
     alignItems: "flex-start",
     justifyContent: "center",
+    backgroundColor: "#FAFAFA",
+    backgroundImage: `url(${bg})`,
+    backgroundSize: "cover",
+    backgroundAttachment: "fixed",
+    /* background by SVGBackgrounds.com */
+  },
+  heading: {
+    fontSize: "2rem",
+    color: "#5c676b",
   },
   container: {
     width: "50%",
@@ -27,9 +36,9 @@ export default {
     alignItems: "center",
     width: "100%",
     justifyContent: "space-between",
-    color: "white",
+    color: "#5c676b",
     "& a": {
-      color: "white",
+      color: "#5c676b",
     },
   },
   palettes: {

@@ -2,7 +2,7 @@ export default {
   root: {
     backgroundColor: "white",
     borderRadius: "5px",
-    border: "1px solid black",
+    border: "1px solid grey",
     padding: "0.5rem",
     position: "relative",
     overflow: "hidden",
