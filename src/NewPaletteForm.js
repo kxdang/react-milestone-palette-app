@@ -13,6 +13,7 @@ import DraggableColorList from "./DraggableColorList";
 import { ValidatorForm } from "react-material-ui-form-validator";
 import { arrayMove } from "react-sortable-hoc";
 import DeleteSweepIcon from "@material-ui/icons/DeleteSweep";
+import seedColors from "./seedColors";
 
 import styles from "./styles/NewPaletteFormStyles";
 
@@ -24,7 +25,7 @@ class NewPaletteForm extends Component {
     super(props);
     this.state = {
       open: true,
-      colors: this.props.palettes[0].colors,
+      colors: seedColors[0].colors,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
