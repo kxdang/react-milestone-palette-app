@@ -10,11 +10,9 @@ import ColorPickerForm from "./ColorPickerForm";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import Button from "@material-ui/core/Button";
 import DraggableColorList from "./DraggableColorList";
-import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
+import { ValidatorForm } from "react-material-ui-form-validator";
 import { arrayMove } from "react-sortable-hoc";
 import DeleteSweepIcon from "@material-ui/icons/DeleteSweep";
-
-import chroma from "chroma-js";
 
 import styles from "./styles/NewPaletteFormStyles";
 

@@ -63,4 +63,14 @@ export default {
       gridTemplateColumns: "repeat(1, 100%)",
     },
   },
+  button: {
+    textDecoration: "none",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  create: {
+    margin: 0,
+    marginTop: "3px",
+  },
 };

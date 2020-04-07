@@ -1,8 +1,8 @@
 import React, { Component } from "react";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 import MiniPalette from "./MiniPalette";
 import { Link } from "react-router-dom";
 import Dialog from "@material-ui/core/Dialog";
-
 import DialogTitle from "@material-ui/core/DialogTitle";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
@@ -13,9 +13,10 @@ import CloseIcon from "@material-ui/icons/Close";
 import Avatar from "@material-ui/core/Avatar";
 import { withStyles } from "@material-ui/styles";
 import styles from "./styles/PaletteListStyles";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
 import blue from "@material-ui/core/colors/blue";
 import red from "@material-ui/core/colors/red";
+import Button from "@material-ui/core/Button";
+import AddIcon from "@material-ui/icons/Add";
 
 class PaletteList extends Component {
   constructor(props) {
@@ -47,15 +48,26 @@ class PaletteList extends Component {
   }
 
   render() {
-    const { palettes, classes, deletePalette } = this.props;
-    const { openDeleteDialog, deletingId } = this.state;
+    const { palettes, classes } = this.props;
+    const { openDeleteDialog } = this.state;
     return (
       <div className={classes.root}>
         <div className={classes.container}>
           <nav className={classes.nav}>
             <h1 className={classes.heading}>React Palette App</h1>
-            <Link to="/palette/new">Create Palette</Link>
+
+            <Link className={classes.button} to="/palette/new">
+              <Button
+                variant="contained"
+                color="primary"
+                className={classes.button}
+              >
+                <AddIcon />
+                <p className={classes.create}>Create Palette</p>
+              </Button>
+            </Link>
           </nav>
+          <p style={{ color: `grey` }}>Created by Kien</p>
 
           <TransitionGroup className={classes.palettes}>
             {palettes.map((palette) => (
@@ -63,7 +75,6 @@ class PaletteList extends Component {
                 <MiniPalette
                   {...palette}
                   goToPalette={this.goToPalette}
-                  // handleDelete={deletePalette}
                   openDialog={this.openDialog}
                   key={palette.id}
                   id={palette.id}

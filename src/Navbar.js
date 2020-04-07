@@ -34,7 +34,7 @@ class Navbar extends Component {
     return (
       <header className={classes.Navbar}>
         <div className={classes.logo}>
-          <Link to="/">React Color Picker</Link>
+          <Link to="/">React Palette App</Link>
         </div>
 
         {showSlider && (
@@ -56,7 +56,7 @@ class Navbar extends Component {
                   width: "13px",
                   height: "13px",
                   marginLeft: "-7px",
-                  marginTop: "-3px"
+                  marginTop: "-3px",
                 }}
                 dotStyle={{
                   backgroundColor: "#7fcd91",
@@ -66,7 +66,7 @@ class Navbar extends Component {
                   width: "13px",
                   height: "13px",
                   marginLeft: "-7px",
-                  marginTop: "-3px"
+                  marginTop: "-3px",
                 }}
                 handleStyle={{
                   backgroundColor: "#7fcd91",
@@ -76,7 +76,7 @@ class Navbar extends Component {
                   width: "13px",
                   height: "13px",
                   marginLeft: "-7px",
-                  marginTop: "-3px"
+                  marginTop: "-3px",
                 }}
               />
             </div>
@@ -109,7 +109,7 @@ class Navbar extends Component {
               aria-label="close"
             >
               <CloseIcon />
-            </IconButton>
+            </IconButton>,
           ]}
         />
       </header>
